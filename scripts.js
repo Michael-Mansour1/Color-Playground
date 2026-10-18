@@ -15,10 +15,35 @@ function changeColor(color) {
 
 colorButtons.forEach(button => {
     button.addEventListener("click", () => { let color = button.textContent; changeColor(color) });
-    
-     button.addEventListener("mouseover", function () { button.style.transform = "scale(1.5)" })
+
+    button.addEventListener("mouseover", function () { button.style.transform = "scale(1.5)" })
 
     button.addEventListener("mouseout", function () { button.style.transform = "rotate(20deg" })
 
 })
-})
+
+
+
+let interval;
+
+
+function switchBg() {
+    clearInterval(interval)
+    let i = 0;
+    interval = setInterval(function () {
+        colorButtons[i].click();
+        i++;
+
+        if (i >= colorButtons.length) {
+            i = 0;
+        }
+    }, 2000);
+}
+
+
+function stopBg() {
+    clearInterval(interval);
+}
+
+
+
